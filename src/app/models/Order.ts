@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
 export const Order = model(
-  "Category",
+  "Order",
   new Schema({
     table: {
       type: String,
