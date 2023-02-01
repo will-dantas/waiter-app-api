@@ -2,7 +2,7 @@ import express from "express";
 import moogoose from "mongoose";
 import { CreateCategoryRouter } from "./app/use-cases/categories/create-category/router";
 import { ListCategoriesRouter } from "./app/use-cases/categories/list-categories/router";
-import { CreateProduct } from "./app/use-cases/products/create-product/create-product";
+import { CreateProductRouter } from "./app/use-cases/products/create-product/router";
 import { ListProductsRouter } from "./app/use-cases/products/list-products/router";
 import { router } from "./router";
 
@@ -23,7 +23,7 @@ moogoose
     new CreateCategoryRouter(app).execute();
 
     new ListProductsRouter(app).execute();
-    // new CreateProduct(app).execute();
+    new CreateProductRouter(app).execute();
 
   })
   .catch(() => console.log("Error connecting to mongo"));

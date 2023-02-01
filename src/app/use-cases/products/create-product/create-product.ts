@@ -1,17 +1,21 @@
 import { Request, Response } from "express";
-import multer from "multer";
+import { Product } from "../../../models/Product";
 
 export class CreateProduct {
   constructor() {}
 
   execute = async (req: Request, res: Response) => {
     try {
-      const { icon, name } = req.body;
-
-      // if (!name) {
-      //   const err = new Error("Name is required!");
-      //   return res.status(400).json({ err });
-      // }
+      const imagePath = req.file?.filename;
+      const { name, description, price, category, ingredients } = req.body;
+      // video 02:44
+      console.log({
+        name,
+        description,
+        price: Number(price),
+        category,
+        ingredients: JSON.parse(ingredients),
+      });
     } catch (error) {
       console.log(error);
       res.sendStatus(500);
