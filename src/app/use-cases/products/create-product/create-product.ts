@@ -8,14 +8,17 @@ export class CreateProduct {
     try {
       const imagePath = req.file?.filename;
       const { name, description, price, category, ingredients } = req.body;
-      // video 02:44
-      console.log({
+
+      const product = await Product.create({
         name,
         description,
+        imagePath,
         price: Number(price),
         category,
-        ingredients: JSON.parse(ingredients),
+        ingredients: ingredients ? JSON.parse(ingredients) : [],
       });
+
+      res.status(201).json(product);
     } catch (error) {
       console.log(error);
       res.sendStatus(500);

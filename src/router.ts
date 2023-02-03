@@ -19,23 +19,23 @@ export const router = Router();
 // router.post("/products", new CreateProduct().execute);
 
 // Get product by category
-router.get("/categories/:categoryId/products", (req, res) => {
-  res.send("OK");
-});
+// router.get("/categories/:categoryId/products", (req, res) => {
+//   res.send("OK");
+// });
 
 // list orders
-router.get("/orders", (req, res) => {
-  res.send("OK");
-});
+// router.get("/orders", (req, res) => {
+//   res.send("OK");
+// });
 
 // Create order
-router.post("/orders", (req, res) => {
-  res.send("OK");
-});
-// Create order status
-router.patch("/orders/ordersId", (req, res) => {
-  res.send("OK");
-});
+// router.post("/orders", (req, res) => {
+//   res.send("OK");
+// });
+// // Create order status
+// router.patch("/orders/:ordersId", (req, res) => {
+//   res.send("OK");
+// });
 // Delete/cancel order
 router.delete("/orders/ordersId", (req, res) => {
   res.send("OK");
