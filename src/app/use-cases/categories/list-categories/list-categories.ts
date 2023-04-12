@@ -7,7 +7,7 @@ export class ListCategories {
   execute = async (req: Request, res: Response) => {
     try {
       const categories = await Category.find();
-      
+      console.log(categories);
       res.json(categories);
     } catch (error) {
       console.log(error);
