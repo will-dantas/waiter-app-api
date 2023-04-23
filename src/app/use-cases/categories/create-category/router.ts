@@ -1,5 +1,5 @@
-import { Application } from "express";
-import { CreateCategory } from "./create-category";
+import { Application } from 'express';
+import { CreateCategory } from './create-category';
 
 export class CreateCategoryRouter {
   constructor(
@@ -7,9 +7,9 @@ export class CreateCategoryRouter {
   ) {
   }
 
-  private readonly createCategoryUrl = "/category"
+  private readonly createCategoryUrl = '/category';
 
   execute = () => {
-    this.app.post(this.createCategoryUrl, new CreateCategory().execute)
-  }
+    this.app.post(this.createCategoryUrl, new CreateCategory().execute);
+  };
 }

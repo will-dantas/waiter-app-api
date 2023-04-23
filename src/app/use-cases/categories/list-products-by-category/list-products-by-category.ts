@@ -1,15 +1,13 @@
-import { Request, Response } from "express";
-import { Product } from "../../../models/Product";
+import { Request, Response } from 'express';
+import { Product } from '../../../models/Product';
 
 export class ListProductsByCategory {
-  constructor() {}
-
   execute = async (req: Request, res: Response) => {
     try {
       const { categoryId } = req.params;
 
       const products = await Product.find()
-        .where("category")
+        .where('category')
         .equals(categoryId);
 
       res.json(products);
