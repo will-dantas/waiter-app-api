@@ -1,5 +1,5 @@
-import { Application } from "express";
-import { ChangeOrderStatus } from "./change-order-status";
+import { Application } from 'express';
+import { ChangeOrderStatus } from './change-order-status';
 
 export class ChangeOrderStatusRouter {
   constructor(
@@ -7,9 +7,9 @@ export class ChangeOrderStatusRouter {
   ) {
   }
 
-  private readonly changeOrderStatusUrl = "/order/:orderId"
+  private readonly changeOrderStatusUrl = '/order/:orderId';
 
   execute = () => {
     this.app.patch(this.changeOrderStatusUrl, new ChangeOrderStatus().execute);
-  }
+  };
 }

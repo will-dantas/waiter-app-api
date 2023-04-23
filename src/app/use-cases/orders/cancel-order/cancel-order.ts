@@ -1,9 +1,7 @@
-import { Request, Response } from "express";
-import { Order } from "../../../models/Order";
+import { Request, Response } from 'express';
+import { Order } from '../../../models/Order';
 
 export class CancelOrder {
-  constructor() {}
-
   execute = async (req: Request, res: Response) => {
     try {
       const { orderId } = req.params;

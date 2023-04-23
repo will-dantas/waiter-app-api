@@ -1,7 +1,9 @@
 import express from 'express';
+import http from 'node:http';
 import moogoose from 'mongoose';
 import path from 'node:path';
 import cors from 'cors';
+import { Server } from 'socket.io';
 import { CreateCategoryRouter } from './app/use-cases/categories/create-category/router';
 import { ListCategoriesRouter } from './app/use-cases/categories/list-categories/router';
 import { ListProductsByCategoryRouter } from './app/use-cases/categories/list-products-by-category/router';
@@ -12,25 +14,27 @@ import { ListOrdersRouter } from './app/use-cases/orders/list-orders/router';
 import { CreateProductRouter } from './app/use-cases/products/create-product/router';
 import { ListProductsRouter } from './app/use-cases/products/list-products/router';
 
+const app = express();
+const server = http.createServer(app);
+export const io = new Server(server);
+
 moogoose
   .connect('mongodb://localhost:27017')
   .then(() => {
+    const port = 3001;
     const corsOptions = {
       origin: '*',
     };
 
-    const app = express();
     app.use(cors(corsOptions));
-
-    const port = 3001;
     app.use(
       '/uploads',
       express.static(path.resolve(__dirname, '..', 'uploads'))
     );
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.listen(port, () => {
-      console.log(`🚀 Server is running on http://172.18.100.109:${port}`);
+    server.listen(port, () => {
+      console.log(`🚀 Server is running on http://localhost:${port}`);
     });
 
     // categories
@@ -49,5 +53,3 @@ moogoose
     new ChangeOrderRouter(app).execute();
   })
   .catch(() => console.log('Error connecting to mongo'));
-
-//[{"name": "mussarela", "icon": "🧀"}, {"name": "catupiry", "icon": "🧀"},{"name": "frango", "icon": "🐔"}]

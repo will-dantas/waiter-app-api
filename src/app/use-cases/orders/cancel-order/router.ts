@@ -1,5 +1,5 @@
-import { Application } from "express";
-import { CancelOrder } from "./cancel-order";
+import { Application } from 'express';
+import { CancelOrder } from './cancel-order';
 
 
 export class ChangeOrderRouter {
@@ -8,9 +8,9 @@ export class ChangeOrderRouter {
   ) {
   }
 
-  private readonly changeOrderStatusUrl = "/order/:orderId"
+  private readonly changeOrderStatusUrl = '/order/:orderId';
 
   execute = () => {
     this.app.delete(this.changeOrderStatusUrl, new CancelOrder().execute);
-  }
+  };
 }

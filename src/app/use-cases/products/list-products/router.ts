@@ -1,5 +1,5 @@
-import { Application } from "express";
-import { ListProducts } from "./list-products";
+import { Application } from 'express';
+import { ListProducts } from './list-products';
 
 export class ListProductsRouter {
   constructor(
@@ -7,9 +7,9 @@ export class ListProductsRouter {
   ) {
   }
 
-  private readonly listProductsUrl = "/products"
+  private readonly listProductsUrl = '/products';
 
   execute = () => {
-    this.app.get(this.listProductsUrl, new ListProducts().execute)
-  }
+    this.app.get(this.listProductsUrl, new ListProducts().execute);
+  };
 }
